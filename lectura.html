@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/base.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/styles.css">
+  <script src="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/_ds_bundle.js"></script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { background: var(--night); margin: 0; }
+    a { color: var(--cream); }
+    a:hover { color: var(--turquoise-soft); }
+    .fl-nav-panel { display: none; }
+    .fl-nav-panel[data-open="true"] { display: flex; }
+    @media (max-width: 760px) {
+      .fl-nav-links { display: none !important; }
+      .fl-nav-burger { display: inline-flex !important; }
+    }
+    @media (max-width: 900px) {
+      .fl-quees { align-items: center !important; }
+      .fl-quees-img { flex: 1 1 100% !important; max-width: 360px !important; margin: 0 auto !important; }
+      .fl-hero { padding-top: 116px !important; }
+      .fl-row { grid-template-columns: 1fr !important; gap: 14px !important; }
+      .fl-frase-tail { text-align: right !important; margin-left: 0 !important; }
+      .fl-frase-p > span { margin-left: 0 !important; }
+      .fl-frase-thread { margin-left: 0 !important; align-self: center !important; }
+      .fl-frase-p span.fl-frase-mid { display: block !important; width: fit-content !important; margin-left: 0 !important; margin-right: 0 !important; }
+      .fl-frase-p { font-size: clamp(1.35rem,6.4vw,1.7rem) !important; width: 100% !important; }
+      .fl-frase-wrap { width: 100% !important; align-items: stretch !important; }
+      .fl-just { text-align: justify !important; hyphens: manual !important; }
+      .fl-foot-bar { display: none !important; }
+      .fl-foot-lock { gap: 14px !important; }
+    }
+  </style>
+</helmet>
+
+<div lang="es" style="--col:min(52rem,100%); position:relative; width:100%; overflow-x:hidden; color:var(--cream); font-family:var(--font-body);">
+
+  <div style="position:fixed; inset:0; z-index:0; background-image:url('assets/fondo-historias-1.jpg'); background-size:cover; background-position:center; pointer-events:none;"></div>
+  <div style="position:fixed; inset:0; z-index:0; background:linear-gradient(180deg, rgba(31,34,46,0.74) 0%, rgba(31,34,46,0.84) 100%); pointer-events:none;"></div>
+  <div class="fl-grain" style="position:fixed; inset:0; z-index:1; pointer-events:none;"></div>
+
+  <div style="position:relative; z-index:2;">
+
+  <nav id="fl-nav" style="position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px clamp(20px,5vw,48px); transition:transform .35s var(--ease-flow);">
+    <a href="index.html" style="display:flex; align-items:center;"><img src="assets/logo-wordmark-cream-trim.png" alt="fluyir" style="height:34px; width:auto;"></a>
+    <div class="fl-nav-links" style="display:flex; align-items:center; gap:clamp(16px,3.2vw,30px);">
+      <a href="informes.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Numerología</a>
+      <a href="escritura.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Escritura</a>
+      <a href="lectura.html" style="font-size:0.82rem; font-weight:500; color:var(--cream); text-decoration:none;">Lectura</a>
+      <a href="blog.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Blog</a>
+      <a href="sobre-mi.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Sobre mí</a>
+    </div>
+    <button class="fl-nav-burger" type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" style="display:none; align-items:center; justify-content:center; min-width:44px; height:44px; padding:0 4px; background:none; border:none; font-family:var(--font-body); font-size:0.7rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream); cursor:pointer;">{{ menuLabel }}</button>
+  </nav>
+  <div class="fl-nav-panel" data-open="{{ menuOpen }}" style="position:fixed; inset:0; z-index:55; flex-direction:column; align-items:flex-start; justify-content:center; gap:clamp(18px,4vw,26px); padding:0 clamp(24px,7vw,48px); background:rgba(31,34,46,0.97); backdrop-filter:blur(6px);">
+      <a href="informes.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Numerología</a>
+      <a href="escritura.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Escritura</a>
+      <a href="lectura.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Lectura</a>
+      <a href="blog.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Blog</a>
+      <a href="sobre-mi.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Sobre mí</a>
+  </div>
+
+  <header id="top" class="fl-hero" style="position:relative; padding:clamp(150px,17vw,210px) clamp(20px,5vw,48px) 0;">
+    <div data-reveal style="max-width:var(--container-wide); margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(36px,6vw,72px); align-items:center;" class="fl-quees">
+    <div style="flex:1 1 440px; min-width:0;">
+      <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">lectura</p>
+      <h1 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.9rem,3.4vw,2.5rem); line-height:1.14; color:var(--cream); margin:14px 0 0;">Tengo una teoría</h1>
+      <p style="font-family:var(--font-serif); font-style:italic; font-size:clamp(1.1rem,1.75vw,1.3rem); line-height:1.5; color:var(--cream); max-width:100%; margin:22px 0 0; text-align:justify; hyphens:manual;">Creo que a todos nos gusta leer. Solo hace falta encontrar el libro correcto.</p>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); max-width:60ch; margin:18px 0 0; text-align:justify; hyphens:manual;">No el que te dicen que leas, el clásico o el que se puso de moda. Tiene que llamar tu atención, por el tema o por el género. Y aun así, puede no gustarte. Entonces, la búsqueda sigue.</p>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); max-width:60ch; margin:18px 0 0; text-align:justify; hyphens:manual;">No hay reglas: alcanza con la curiosidad de intentarlo.</p>
+    </div>
+    <div class="fl-quees-img" style="flex:0 1 300px; max-width:320px; width:100%;">
+      <img src="assets/liccamuciula.jpg" alt="Mesas en la vereda de una librería, con gente leyendo y un cuaderno abierto" style="display:block; width:100%; aspect-ratio:3/4; object-fit:cover; object-position:50% 52%; filter:saturate(0.82) brightness(0.8) contrast(1.05); border:1px solid var(--cream-a12); border-radius:3px; box-shadow:var(--shadow-lg);">
+    </div>
+    </div>
+  </header>
+
+  <section style="position:relative; display:flex; align-items:center; justify-content:center; text-align:center; margin:clamp(56px,7vw,96px) 0; padding:clamp(44px,5.5vw,66px) clamp(20px,5vw,48px); overflow:hidden;">
+    <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(90% 130% at 50% 50%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 75%);"></div>
+    <div class="fl-frase-wrap" data-reveal style="position:relative; max-width:100%; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(16px,2.2vw,24px);">
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(203,161,90,0) 0%, rgba(230,196,154,1) 100%);"></span>
+      <p class="fl-frase-p" style="font-weight:400; font-size:clamp(1.5rem,3.2vw,2.25rem); line-height:1.32; color:var(--cream); margin:0; text-align:left;"><span style="display:block; font-family:var(--font-serif); font-weight:400; text-transform:lowercase; letter-spacing:0.01em;">disfrutar de la lectura</span><span class="fl-frase-tail" style="display:block; margin-top:0.1em; margin-left:clamp(18px,7vw,110px); font-family:var(--font-body); font-weight:500; font-size:0.775em; text-transform:uppercase; letter-spacing:0.14em;">al propio ritmo</span></p>
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(230,196,154,1) 0%, rgba(203,161,90,0) 100%);"></span>
+    </div>
+  </section>
+
+  <section style="position:relative; padding:0 clamp(20px,5vw,48px);">
+    <div data-reveal style="max-width:var(--col); margin:0 auto;">
+      <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">libros</p>
+      <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.45rem,2.4vw,1.8rem); line-height:1.12; color:var(--cream); margin:14px 0 0;">Según el momento</h2>
+      <p class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:20px 0 0; text-align:justify; hyphens:manual;">Acá te dejo algunos de los míos, ordenados según lo que puedas estar atravesando.</p>
+    </div>
+    <div style="max-width:var(--col); margin:clamp(36px,4.6vw,56px) auto 0; display:flex; flex-direction:column; gap:clamp(48px,6vw,80px);">
+      <div data-reveal>
+        <h2 style="font-family:var(--font-body); font-weight:600; font-size:0.78rem; letter-spacing:0.2em; line-height:1.6; text-transform:uppercase; color:var(--cream); margin:0;">Cuando necesitás desconectar</h2>
+        <p style="font-size:0.95rem; line-height:1.7; color:var(--cream-a64); margin:10px 0 0;">Historias en las que meterte y perder la noción del tiempo.</p>
+        <div style="display:flex; flex-direction:column; gap:0; margin-top:clamp(22px,3vw,30px);">
+          <div class="fl-row" style="display:grid; grid-template-columns:minmax(0,17rem) minmax(0,1fr); gap:clamp(18px,3vw,36px); padding:clamp(18px,2.4vw,24px) 0; border-top:1px solid var(--cream-a12);">
+            <div>
+              <h3 style="font-family:var(--font-serif); font-weight:500; font-size:clamp(1.4rem,2.2vw,1.55rem); line-height:1.2; color:var(--cream); margin:0;">La sombra del viento</h3>
+              <p style="font-size:0.8rem; letter-spacing:0.02em; color:var(--cream-a64); margin:8px 0 0;">Carlos Ruiz Zafón</p>
+            </div>
+            <p class="fl-just" style="font-size:0.98rem; line-height:1.74; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Libros, secretos y una Barcelona de posguerra. Es una historia que te atrapa: no podés parar de leerla y, a la vez, no querés que se termine.</p>
+          </div>
+          <div class="fl-row" style="display:grid; grid-template-columns:minmax(0,17rem) minmax(0,1fr); gap:clamp(18px,3vw,36px); padding:clamp(18px,2.4vw,24px) 0; border-top:1px solid var(--cream-a12);">
+            <div>
+              <h3 style="font-family:var(--font-serif); font-weight:500; font-size:clamp(1.4rem,2.2vw,1.55rem); line-height:1.2; color:var(--cream); margin:0;">Todos quieren a Daisy Jones</h3>
+              <p style="font-size:0.8rem; letter-spacing:0.02em; color:var(--cream-a64); margin:8px 0 0;">Taylor Jenkins Reid</p>
+            </div>
+            <p class="fl-just" style="font-size:0.98rem; line-height:1.74; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">El ascenso y la caída de una banda de rock de los setenta, contado como si fueran entrevistas. La forma en que está escrito hace que te olvides de que es ficción. Y como en la vida real, muestra cómo a veces, teniendo todo lo que se deseaba, no se sabe sostener.</p>
+          </div>
+        </div>
+      </div>
+      <div data-reveal>
+        <h2 style="font-family:var(--font-body); font-weight:600; font-size:0.78rem; letter-spacing:0.2em; line-height:1.6; text-transform:uppercase; color:var(--cream); margin:0;">Cuando querés ver las cosas de otra manera</h2>
+        <p style="font-size:0.95rem; line-height:1.7; color:var(--cream-a64); margin:10px 0 0;">Libros que te dan otra perspectiva sobre tus propias vivencias.</p>
+        <div style="display:flex; flex-direction:column; gap:0; margin-top:clamp(22px,3vw,30px);">
+          <div class="fl-row" style="display:grid; grid-template-columns:minmax(0,17rem) minmax(0,1fr); gap:clamp(18px,3vw,36px); padding:clamp(18px,2.4vw,24px) 0; border-top:1px solid var(--cream-a12);">
+            <div>
+              <h3 style="font-family:var(--font-serif); font-weight:500; font-size:clamp(1.4rem,2.2vw,1.55rem); line-height:1.2; color:var(--cream); margin:0;">El precio de no ser tú</h3>
+              <p style="font-size:0.8rem; letter-spacing:0.02em; color:var(--cream-a64); margin:8px 0 0;">Pablo André Hodel</p>
+            </div>
+            <p class="fl-just" style="font-size:0.98rem; line-height:1.74; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Cuestiona lo que repetimos sin pensar y la costumbre de mirar las cosas desde un solo lugar. Te ayuda a ver los mandatos que aprendiste para encajar y a desarmarlos haciéndote cargo, sin quedarte en el lugar de víctima.</p>
+          </div>
+          <div class="fl-row" style="display:grid; grid-template-columns:minmax(0,17rem) minmax(0,1fr); gap:clamp(18px,3vw,36px); padding:clamp(18px,2.4vw,24px) 0; border-top:1px solid var(--cream-a12);">
+            <div>
+              <h3 style="font-family:var(--font-serif); font-weight:500; font-size:clamp(1.4rem,2.2vw,1.55rem); line-height:1.2; color:var(--cream); margin:0;">El camino del artista</h3>
+              <p style="font-size:0.8rem; letter-spacing:0.02em; color:var(--cream-a64); margin:8px 0 0;">Julia Cameron</p>
+            </div>
+            <p class="fl-just" style="font-size:0.98rem; line-height:1.74; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Parte de una idea simple: la creatividad es de todos, sin importar a qué te dediques. Propone herramientas para recuperarla, y la mejor son las páginas matutinas: tres páginas escritas a mano apenas te levantás, sin pensar en lo que ponés. A mí me abrieron una puerta que tenía cerrada: ahí acepté que me gustaba escribir. Todavía las hago.</p>
+          </div>
+        </div>
+      </div>
+      <div data-reveal>
+        <h2 style="font-family:var(--font-body); font-weight:600; font-size:0.78rem; letter-spacing:0.2em; line-height:1.6; text-transform:uppercase; color:var(--cream); margin:0;">Cuando buscás tu propio criterio</h2>
+        <p style="font-size:0.95rem; line-height:1.7; color:var(--cream-a64); margin:10px 0 0;">Libros con los que no siempre vas a coincidir, y justo por eso te hacen pensar qué creés vos.</p>
+        <div style="display:flex; flex-direction:column; gap:0; margin-top:clamp(22px,3vw,30px);">
+          <div class="fl-row" style="display:grid; grid-template-columns:minmax(0,17rem) minmax(0,1fr); gap:clamp(18px,3vw,36px); padding:clamp(18px,2.4vw,24px) 0; border-top:1px solid var(--cream-a12);">
+            <div>
+              <h3 style="font-family:var(--font-serif); font-weight:500; font-size:clamp(1.4rem,2.2vw,1.55rem); line-height:1.2; color:var(--cream); margin:0;">El poder del ahora</h3>
+              <p style="font-size:0.8rem; letter-spacing:0.02em; color:var(--cream-a64); margin:8px 0 0;">Eckhart Tolle</p>
+            </div>
+            <p class="fl-just" style="font-size:0.98rem; line-height:1.74; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Habla de vivir en el presente desde un pedestal. Repite una y otra vez lo difícil que es alcanzar lo que él plantea, como si el resto nunca fuéramos a llegar. Está acá porque a veces un libro te sirve justamente para darte cuenta de lo que no querés.</p>
+          </div>
+          <div class="fl-row" style="display:grid; grid-template-columns:minmax(0,17rem) minmax(0,1fr); gap:clamp(18px,3vw,36px); padding:clamp(18px,2.4vw,24px) 0; border-top:1px solid var(--cream-a12); border-bottom:1px solid var(--cream-a12);">
+            <div>
+              <h3 style="font-family:var(--font-serif); font-weight:500; font-size:clamp(1.4rem,2.2vw,1.55rem); line-height:1.2; color:var(--cream); margin:0;">Muchas vidas, muchos maestros</h3>
+              <p style="font-size:0.8rem; letter-spacing:0.02em; color:var(--cream-a64); margin:8px 0 0;">Brian Weiss</p>
+            </div>
+            <p class="fl-just" style="font-size:0.98rem; line-height:1.74; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Un psiquiatra cuenta cómo, en sesiones de terapia, una paciente empieza a recordar vidas pasadas. Te puede conmover, generar dudas o las dos cosas, y en cualquier caso te hace preguntarte qué creés.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative; padding:clamp(64px,8vw,112px) clamp(20px,5vw,48px) 0;">
+    <div data-reveal style="max-width:var(--col); margin:0 auto;">
+      <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">fragmentos</p>
+      <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.45rem,2.4vw,1.8rem); line-height:1.12; color:var(--cream); margin:14px 0 0;">Subrayados</h2>
+      <p class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:20px 0 0; text-align:justify; hyphens:manual;">Frases sueltas, para pasar por el cuerpo.</p>
+    </div>
+    <div style="max-width:var(--col); margin:clamp(30px,4vw,46px) auto 0; display:flex; flex-direction:column; gap:clamp(26px,3.4vw,38px);">
+      <div data-reveal style="display:flex; align-items:flex-start; gap:clamp(18px,2.6vw,28px);">
+        <span style="flex:none; width:2px; align-self:stretch; min-height:48px; background:linear-gradient(180deg, #CBA15A 0%, #E6C49A 100%); box-shadow:0 0 10px rgba(203,161,90,0.45);"></span>
+        <div style="flex:1; min-width:0;">
+          <p style="font-family:var(--font-serif); font-style:italic; font-size:clamp(1.15rem,2vw,1.42rem); line-height:1.5; color:var(--cream); margin:0;">… a veces la única manera de aprender es vivir.</p>
+          <p style="font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--cream-a64); margin:12px 0 0;">La biblioteca de la medianoche · Matt Haig</p>
+        </div>
+      </div>
+      <div data-reveal style="display:flex; align-items:flex-start; gap:clamp(18px,2.6vw,28px);">
+        <span style="flex:none; width:2px; align-self:stretch; min-height:48px; background:linear-gradient(180deg, #CBA15A 0%, #E6C49A 100%); box-shadow:0 0 10px rgba(203,161,90,0.45);"></span>
+        <div style="flex:1; min-width:0;">
+          <p style="font-family:var(--font-serif); font-style:italic; font-size:clamp(1.15rem,2vw,1.42rem); line-height:1.5; color:var(--cream); margin:0;">… la vida es más cambiante de lo que pensaba. Quiero decir que una vida puede ser desgraciada durante mucho tiempo y luego ser feliz. No es solo una cosa o la otra; no está anclada a un raíl llamado «personalidad» y tiene que seguir por ahí hasta el final. Pero yo antes creía que sí.</p>
+          <p style="font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--cream-a64); margin:12px 0 0;">Dónde estás, mundo bello · Sally Rooney</p>
+        </div>
+      </div>
+      <div data-reveal style="display:flex; align-items:flex-start; gap:clamp(18px,2.6vw,28px);">
+        <span style="flex:none; width:2px; align-self:stretch; min-height:48px; background:linear-gradient(180deg, #CBA15A 0%, #E6C49A 100%); box-shadow:0 0 10px rgba(203,161,90,0.45);"></span>
+        <div style="flex:1; min-width:0;">
+          <p style="font-family:var(--font-serif); font-style:italic; font-size:clamp(1.15rem,2vw,1.42rem); line-height:1.5; color:var(--cream); margin:0;">Cambiar es pensar más allá de cómo nos sentimos.</p>
+          <p style="font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--cream-a64); margin:12px 0 0;">Deja de ser tú · Joe Dispenza</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative; display:flex; align-items:center; justify-content:center; text-align:center; margin:clamp(56px,7vw,96px) 0; padding:clamp(44px,5.5vw,66px) clamp(20px,5vw,48px); overflow:hidden;">
+    <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(90% 130% at 50% 50%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 75%);"></div>
+    <div class="fl-frase-wrap" data-reveal style="position:relative; max-width:100%; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(16px,2.2vw,24px);">
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(203,161,90,0) 0%, rgba(230,196,154,1) 100%);"></span>
+      <p class="fl-frase-p" style="font-weight:400; font-size:clamp(1.5rem,3.2vw,2.25rem); line-height:1.32; color:var(--cream); margin:0; text-align:left;"><span style="display:block; font-family:var(--font-body); font-weight:500; font-size:0.775em; text-transform:uppercase; letter-spacing:0.14em;">a veces otros escriben,</span><span class="fl-frase-tail" style="display:block; margin-top:0.1em; margin-left:clamp(18px,7vw,110px); font-family:var(--font-serif); font-weight:400; text-transform:lowercase; letter-spacing:0.01em;">lo que cuesta decir</span></p>
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(230,196,154,1) 0%, rgba(203,161,90,0) 100%);"></span>
+    </div>
+  </section>
+
+  <section style="position:relative; padding:0 clamp(20px,5vw,48px);">
+    <div data-reveal style="max-width:var(--col); margin:0 auto;">
+      <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">prácticas posibles</p>
+      <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.45rem,2.4vw,1.8rem); line-height:1.12; color:var(--cream); margin:14px 0 0;">Maneras de leer, sin obligación</h2>
+      <p class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:20px 0 0; text-align:justify; hyphens:manual;">Estas son las que a mí me funcionan. Tomá las que te sirvan, dejá el resto.</p>
+    </div>
+
+    <div style="max-width:var(--col); margin:clamp(28px,3.6vw,44px) auto 0; display:flex; flex-direction:column;">
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:clamp(26px,3vw,38px);">
+        <span style="position:absolute; left:23px; top:48px; bottom:0; width:2px; background:linear-gradient(var(--cream-a20), var(--cream-a08)); transform:translateX(-50%);"></span>
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 4.5l4 4L9 19H5v-4z"></path><path d="M13 7l4 4"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Hacerlos tuyos</h3>
+          <p class="fl-just" style="font-size:0.98rem; line-height:1.72; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">Subrayá, doblá la hoja, escribí en el margen. Un libro marcado es un libro con el que conversaste. Cuando lo volvés a abrir, ves por dónde pasaste.</p>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:clamp(26px,3vw,38px);">
+        <span style="position:absolute; left:23px; top:48px; bottom:0; width:2px; background:linear-gradient(var(--cream-a20), var(--cream-a08)); transform:translateX(-50%);"></span>
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v16l-5-4-5 4z"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Dejarlo cuando no engancha</h3>
+          <p class="fl-just" style="font-size:0.98rem; line-height:1.72; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">Si no te engancha, dejalo. A veces no es el libro, es el momento. Uno que te encantó hace años hoy puede no decirte nada, y uno que dejaste por la mitad puede atraparte cuando lo retomes. Y si intuís que tiene algo para vos, seguí un poco más: muchas veces hay un capítulo que aburre y después se pone bueno.</p>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:clamp(26px,3vw,38px);">
+        <span style="position:absolute; left:23px; top:48px; bottom:0; width:2px; background:linear-gradient(var(--cream-a20), var(--cream-a08)); transform:translateX(-50%);"></span>
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.2h5.6v13.6H4z"></path><path d="M12.2 6.6l5.4 1.2-2.6 12.2-5.4-1.2"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Varios a la vez</h3>
+          <p class="fl-just" style="font-size:0.98rem; line-height:1.72; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">Tener más de uno empezado te deja agarrar el que va con tu energía del día. Puede que avances más lento, o que varios queden por la mitad. Leer así también es leer.</p>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:clamp(26px,3vw,38px);">
+        <span style="position:absolute; left:23px; top:48px; bottom:0; width:2px; background:linear-gradient(var(--cream-a20), var(--cream-a08)); transform:translateX(-50%);"></span>
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6s5.8 6.1 5.8 10A5.8 5.8 0 0 1 6.2 13.6C6.2 9.7 12 3.6 12 3.6Z"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Elegir según cómo estás</h3>
+          <p class="fl-just" style="font-size:0.98rem; line-height:1.72; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">El próximo no tiene que ser el que compraste primero. Dejate llevar por lo que tenés ganas de leer hoy. Los que quedan sin leer te van a seguir esperando, para cuando sientas que es su turno.</p>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:0;">
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 12a8.2 8.2 0 1 1-2.6-6"></path><path d="M20.4 4.2v3.9h-3.9"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Leer sin contar</h3>
+          <p class="fl-just" style="font-size:0.98rem; line-height:1.72; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">No hace falta leer 80 libros por año. Cuando la lectura se vuelve una meta, pasa a ser algo más con lo que cumplir. No la volvamos eso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="position:relative; margin:clamp(40px,5.5vw,76px) 0 0; overflow:hidden;">
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(95% 120% at 50% 46%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 82%);"></div>
+  <section style="position:relative; padding:clamp(52px,6.5vw,86px) clamp(20px,5vw,48px) clamp(40px,5vw,66px);">
+    <div style="position:relative; max-width:var(--col); margin:0 auto;">
+      <div data-reveal style="text-align:center;">
+        <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">propuesta</p>
+        <p style="font-size:clamp(0.92rem,1.3vw,0.98rem); line-height:1.8; color:var(--cream-200); margin:16px 0 0;">Explorá como lo sientas, todos se complementan.</p>
+      </div>
+
+      <div data-reveal style="position:relative; max-width:min(34rem,100%); margin:clamp(30px,3.8vw,44px) auto 0;">
+      <span style="position:absolute; left:16%; right:16%; top:25px; height:2px; background:linear-gradient(90deg, rgba(203,161,90,0.2) 0%, #CBA15A 22%, #E6C49A 50%, #CBA15A 78%, rgba(203,161,90,0.2) 100%); box-shadow:0 0 10px rgba(203,161,90,0.45);"></span>
+      <div style="position:relative; display:grid; grid-template-columns:repeat(3,1fr); align-items:start; justify-items:center;">
+      <a href="informes.html" style="display:flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none;">
+        <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid var(--cream-a20); color:var(--cream-a64);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5a10.5 10.5 0 1 1-7.4 3.1"></path><path d="M14 8.5a5.5 5.5 0 1 0 3.9 9.4" stroke-opacity="0.55"></path><circle cx="14" cy="14" r="1.4" fill="currentColor" stroke="none"></circle><circle cx="6.6" cy="6.6" r="1.6" fill="currentColor" stroke="none"></circle></svg></span>
+        <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a;">Numerología</span>
+      </a>
+      <a href="escritura.html" style="display:flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none;">
+        <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid var(--cream-a20); color:var(--cream-a64);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 21c3.6 0 4.2-4.6 6.3-10.6C11.2 6.2 12.6 4 14.4 4c1.5 0 2.3 1.3 2.3 2.7 0 3.1-3 5.5-6.1 6.7-2.2.9-3.6 2-3.6 3.4 0 1.1.9 1.8 2 1.8 2.6 0 4.4-3 6.6-3 1.1 0 1.7.7 1.7 1.5 0 .9-.7 1.5-.7 2.3 0 .6.5 1 1.2 1 1.6 0 3.1-1.6 5.7-1.6"></path></svg></span>
+        <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a;">Escritura</span>
+      </a>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+        <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid #CBA15A; color:#E6C49A; box-shadow:0 0 14px rgba(203,161,90,0.35);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7.5v16"></path><path d="M14 7.5C11.2 5 7.8 4 3.5 4v13c4.3 0 7.7 1.2 10.5 3.6"></path><path d="M14 7.5C16.8 5 20.2 4 24.5 4v13c-4.3 0-7.7 1.2-10.5 3.6" stroke-opacity="0.5"></path></svg></span>
+        <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream);">Lectura</span>
+      </div>
+      </div>
+      </div>
+
+      <div data-reveal style="margin:clamp(40px,5vw,64px) auto 0; text-align:center;">
+        <p style="font-size:clamp(0.92rem,1.3vw,0.98rem); line-height:1.76; color:var(--cream-200); margin:0;">Podés escribirme por acá.</p>
+        <a href="https://instagram.com/fluyir22" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; margin-top:18px; font-size:0.86rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a; text-decoration:none; border-bottom:1px solid var(--cream-a40); padding-bottom:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="3.8"></circle><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle></svg>
+          @fluyir22
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="position:relative; margin-top:-1px; padding:clamp(40px,5vw,66px) clamp(20px,5vw,48px) clamp(28px,3.4vw,44px);">
+    <div style="max-width:var(--container-wide); margin:0 auto; padding-top:clamp(24px,3.2vw,34px); border-top:1px solid var(--cream-a08);">
+      <div class="fl-foot-lock" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:clamp(16px,2.6vw,28px);">
+        <img src="assets/logo-wordmark-cream-trim.png" alt="fluyir" style="display:block; height:34px; width:auto;">
+        <span class="fl-foot-bar" style="flex:none; width:1px; height:30px; background:var(--cream-a20);"></span>
+        <p style="font-size:clamp(0.9rem,1.35vw,1rem); font-weight:500; color:var(--cream-200); margin:0;">Espiritualidad sin glitter.</p>
+      </div>
+      <p style="text-align:center; font-size:0.72rem; color:var(--cream-a64); margin:clamp(22px,3vw,30px) 0 0;">© {{ year }} fluyir. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860},&quot;revealAnimations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  componentDidMount() { this._reveal(); this._nav(); }
+  _nav() {
+    const nav = document.getElementById('fl-nav');
+    if (!nav) return;
+    let last = window.scrollY || 0, tick = false;
+    const apply = () => {
+      const y = window.scrollY || 0;
+      if (y > last + 4 && y > 90) nav.style.transform = 'translateY(-110%)';
+      else if (y < last - 4 || y <= 24) nav.style.transform = 'translateY(0)';
+      last = y; tick = false;
+    };
+    window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(apply); } }, { passive: true });
+  }
+  _reveal() {
+    const on = this.props.revealAnimations ?? true;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!on || reduce || !('IntersectionObserver' in window)) return;
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity 760ms cubic-bezier(0.22,0.61,0.36,1), transform 760ms cubic-bezier(0.22,0.61,0.36,1)';
+    });
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+    }), { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+  _toggle = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  _close = () => this.setState({ menuOpen: false });
+  renderVals() {
+    return {
+      menuOpen: String(!!this.state.menuOpen),
+      menuLabel: this.state.menuOpen ? 'cerrar' : 'menú',
+      toggleMenu: this._toggle,
+      closeMenu: this._close,
+      year: new Date().getFullYear()
+    };
+  }
+}
+</script>
+</body>
+</html>

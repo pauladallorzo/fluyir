@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/base.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/styles.css">
+  <script src="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/_ds_bundle.js"></script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { background: var(--night); margin: 0; }
+    a { color: var(--cream); }
+    a:hover { color: var(--turquoise-soft); }
+    .fl-nav-panel { display: none; }
+    .fl-nav-panel[data-open="true"] { display: flex; }
+    @media (max-width: 760px) {
+      .fl-nav-links { display: none !important; }
+      .fl-nav-burger { display: inline-flex !important; }
+    }
+    @media (max-width: 900px) {
+      .fl-hero { padding-top: 116px !important; }
+      .fl-just { text-align: justify !important; hyphens: manual !important; }
+      .fl-foot-bar { display: none !important; }
+      .fl-foot-lock { gap: 14px !important; }
+    }
+  </style>
+</helmet>
+
+<div lang="es" style="--col:min(44rem,100%); position:relative; width:100%; overflow-x:hidden; color:var(--cream); font-family:var(--font-body);">
+
+  <div style="position:fixed; inset:0; z-index:0; background-image:url('assets/fondo-historias-1.jpg'); background-size:cover; background-position:center; pointer-events:none;"></div>
+  <div style="position:fixed; inset:0; z-index:0; background:linear-gradient(180deg, rgba(31,34,46,0.74) 0%, rgba(31,34,46,0.84) 100%); pointer-events:none;"></div>
+  <div class="fl-grain" style="position:fixed; inset:0; z-index:1; pointer-events:none;"></div>
+
+  <div style="position:relative; z-index:2;">
+
+  <nav id="fl-nav" style="position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px clamp(20px,5vw,48px); transition:transform .35s var(--ease-flow);">
+    <a href="index.html" style="display:flex; align-items:center;"><img src="assets/logo-wordmark-cream-trim.png" alt="fluyir" style="height:34px; width:auto;"></a>
+    <div class="fl-nav-links" style="display:flex; align-items:center; gap:clamp(16px,3.2vw,30px);">
+      <a href="informes.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Numerología</a>
+      <a href="escritura.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Escritura</a>
+      <a href="lectura.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Lectura</a>
+      <a href="blog.html" style="font-size:0.82rem; font-weight:500; color:var(--cream); text-decoration:none;">Blog</a>
+      <a href="sobre-mi.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Sobre mí</a>
+    </div>
+    <button class="fl-nav-burger" type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" style="display:none; align-items:center; justify-content:center; min-width:44px; height:44px; padding:0 4px; background:none; border:none; font-family:var(--font-body); font-size:0.7rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream); cursor:pointer;">{{ menuLabel }}</button>
+  </nav>
+  <div class="fl-nav-panel" data-open="{{ menuOpen }}" style="position:fixed; inset:0; z-index:55; flex-direction:column; align-items:flex-start; justify-content:center; gap:clamp(18px,4vw,26px); padding:0 clamp(24px,7vw,48px); background:rgba(31,34,46,0.97); backdrop-filter:blur(6px);">
+      <a href="informes.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Numerología</a>
+      <a href="escritura.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Escritura</a>
+      <a href="lectura.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Lectura</a>
+      <a href="blog.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Blog</a>
+      <a href="sobre-mi.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Sobre mí</a>
+  </div>
+
+  <header id="top" class="fl-hero" style="position:relative; padding:clamp(150px,17vw,210px) clamp(20px,5vw,48px) 0;">
+    <div data-reveal style="max-width:var(--col); margin:0 auto;">
+      <a href="blog.html" style="display:inline-block; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream-a64); text-decoration:none;">← volver al blog</a>
+      <h1 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.85rem,4.2vw,2.8rem); line-height:1.14; color:var(--cream); margin:22px 0 0;">Todo va a fluyir</h1>
+      <p style="font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--cream-a64); margin:18px 0 0;">23 de marzo de 2024 · 3 minutos</p>
+    </div>
+  </header>
+
+  <article style="position:relative; padding:clamp(40px,5vw,66px) clamp(20px,5vw,48px) 0;">
+    <div style="max-width:var(--col); margin:0 auto; display:flex; flex-direction:column; gap:clamp(18px,2.2vw,24px);">
+      <p data-reveal class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Si si, leíste bien. Dice FLUYIR. Y está bien escrito, al menos en este espacio. Tal vez no es como se debe, pero de esos ya no quiero tantos. Quiero y elijo hace ya un tiempo los sentires, más que los deberes. Esos los hace mi sobrina para la escuela, y deseo que solo sean para la escuela. Ella, de quien aprendo constantemente, es la creadora de esta palabra. Se dejó llevar y de su boca salió la expresión mágica, como la sintió, sin reprimirse, y olvidándose del cumplir con las reglas que parecen intocables. Fue tan natural que antes de terminarla, ya se estaba riendo a carcajadas, con la inocencia que caracteriza a los infantes. Y sin saberlo, me estaba regalando MI palabra.</p>
+      <p data-reveal class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Y no sólo eso, también el entender que a veces, aunque pifiamos, salga bien o no tanto, acertemos, inventemos nuevas palabras, realidades, momentos, podemos salir de la caja y dejarnos llevar.</p>
+
+
+      <p data-reveal class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Esta es mi propuesta, que fluyamos en conjunto, pero intentando dejar de lado el significado banal de moda. Es hacerlo con todo lo que ello implica. Fluir es atravesar cada momento y desafío, recordando que pasan por y para algo, que el entendimiento va a llegar. Permitirse sentir y darle tiempo a cada proceso es fundamental para trascenderlos. Saber que, aunque ayuda, no basta con el positivismo. Hay que comprometerse, creerlo de verdad, sentirlo en el cuerpo, darle lugar. Y todo esto es mucho más efectivo cuando va acompañado del autoconocimiento. Porque para armarse, primero hay que des-armarse, hurgar, sacar, enfrentar.</p>
+      <p data-reveal class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Cuánta valentía requiere este camino! Recordalo cuando sientas que no podés más o que no avanzás, cuando te invada el miedo y quieras volver a lo conocido. No te pasa solo a vos. Esto también es parte del proceso, y está bien que así sea. Pero no tiene que ser en soledad, existe una gran red de contención que va a festejar los pasos hacia adelante y va a abrazar la quietud.</p>
+      <p data-reveal class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Volvamos al presente y repitamos "todo va a fluyir", porque a la larga, más temprano que tarde, volvemos a encontrar el cauce.</p>
+    </div>
+  </article>
+
+  <div style="position:relative; margin:clamp(44px,6vw,80px) 0 0; overflow:hidden;">
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(95% 120% at 50% 46%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 82%);"></div>
+  <section style="position:relative; padding:clamp(52px,6.5vw,86px) clamp(20px,5vw,48px) clamp(40px,5vw,66px);">
+    <div style="position:relative; max-width:min(52rem,100%); margin:0 auto;">
+      <div data-reveal style="text-align:center;">
+        <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">seguir leyendo</p>
+        <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.3rem,2.6vw,1.8rem); line-height:1.2; color:var(--cream); margin:14px 0 0;">Cambiar y permanecer</h2>
+        <p style="font-size:clamp(0.96rem,1.4vw,1.04rem); line-height:1.78; color:var(--cream-200); margin:14px auto 0; max-width:36rem;">Pero… permanecer dónde? En los procesos, en lo que nos interpela, en las preguntas que nos incomodan y las respuestas que aún no llegan.</p>
+        <a href="post-permanecer.html" style="display:inline-block; margin-top:22px; font-size:0.86rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a; text-decoration:none; border-bottom:1px solid var(--cream-a40); padding-bottom:4px;">Leer</a>
+      </div>
+      <div data-reveal style="margin:clamp(40px,5vw,64px) auto 0; text-align:center;">
+        <p style="font-size:clamp(0.92rem,1.3vw,0.98rem); line-height:1.76; color:var(--cream-200); margin:0;">También estoy por acá.</p>
+        <a href="https://instagram.com/fluyir22" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; margin-top:18px; font-size:0.86rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a; text-decoration:none; border-bottom:1px solid var(--cream-a40); padding-bottom:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="3.8"></circle><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle></svg>
+          @fluyir22
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="position:relative; margin-top:-1px; padding:clamp(40px,5vw,66px) clamp(20px,5vw,48px) clamp(28px,3.4vw,44px);">
+    <div style="max-width:var(--container-wide); margin:0 auto; padding-top:clamp(24px,3.2vw,34px); border-top:1px solid var(--cream-a08);">
+      <div class="fl-foot-lock" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:clamp(16px,2.6vw,28px);">
+        <img src="assets/logo-wordmark-cream-trim.png" alt="fluyir" style="display:block; height:34px; width:auto;">
+        <span class="fl-foot-bar" style="flex:none; width:1px; height:30px; background:var(--cream-a20);"></span>
+        <p style="font-size:clamp(0.9rem,1.35vw,1rem); font-weight:500; color:var(--cream-200); margin:0;">Espiritualidad sin glitter.</p>
+      </div>
+      <p style="text-align:center; font-size:0.72rem; color:var(--cream-a64); margin:clamp(22px,3vw,30px) 0 0;">© {{ year }} fluyir. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860},&quot;revealAnimations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  componentDidMount() { this._reveal(); this._nav(); }
+  _nav() {
+    const nav = document.getElementById('fl-nav');
+    if (!nav) return;
+    let last = window.scrollY || 0, tick = false;
+    const apply = () => {
+      const y = window.scrollY || 0;
+      if (y > last + 4 && y > 90) nav.style.transform = 'translateY(-110%)';
+      else if (y < last - 4 || y <= 24) nav.style.transform = 'translateY(0)';
+      last = y; tick = false;
+    };
+    window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(apply); } }, { passive: true });
+  }
+  _reveal() {
+    const on = this.props.revealAnimations ?? true;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!on || reduce || !('IntersectionObserver' in window)) return;
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity 760ms cubic-bezier(0.22,0.61,0.36,1), transform 760ms cubic-bezier(0.22,0.61,0.36,1)';
+    });
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+    }), { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+  _toggle = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  _close = () => this.setState({ menuOpen: false });
+  renderVals() {
+    return {
+      menuOpen: String(!!this.state.menuOpen),
+      menuLabel: this.state.menuOpen ? 'cerrar' : 'menú',
+      toggleMenu: this._toggle,
+      closeMenu: this._close,
+      year: new Date().getFullYear()
+    };
+  }
+}
+</script>
+</body>
+</html>

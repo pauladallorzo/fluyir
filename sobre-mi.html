@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/base.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/styles.css">
+  <script src="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/_ds_bundle.js"></script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { background: var(--night); margin: 0; }
+    a { color: var(--cream); }
+    a:hover { color: var(--turquoise-soft); }
+    .fl-nav-panel { display: none; }
+    .fl-nav-panel[data-open="true"] { display: flex; }
+    @media (max-width: 760px) {
+      .fl-nav-links { display: none !important; }
+      .fl-nav-burger { display: inline-flex !important; }
+    }
+    @media (max-width: 900px) {
+      .fl-hero { padding-top: 116px !important; }
+      .fl-banda { aspect-ratio: 4/3 !important; filter: saturate(0.88) contrast(1.02) brightness(0.86) !important; }
+      .fl-banda-scrim { opacity: 0.45 !important; }
+      .fl-frase-tail { text-align: right !important; margin-left: 0 !important; }
+      .fl-frase-p > span { margin-left: 0 !important; }
+      .fl-frase-thread { margin-left: 0 !important; align-self: center !important; }
+      .fl-frase-p { font-size: clamp(1.35rem,6.4vw,1.7rem) !important; width: 100% !important; }
+      .fl-frase-wrap { width: 100% !important; align-items: stretch !important; }
+      .fl-just { text-align: justify !important; hyphens: manual !important; }
+      .fl-foot-bar { display: none !important; }
+      .fl-foot-lock { gap: 14px !important; }
+    }
+  </style>
+</helmet>
+
+<div lang="es" style="--col:min(52rem,100%); position:relative; width:100%; overflow-x:hidden; color:var(--cream); font-family:var(--font-body);">
+
+  <div style="position:fixed; inset:0; z-index:0; background-image:url('assets/fondo-historias-1.jpg'); background-size:cover; background-position:center; pointer-events:none;"></div>
+  <div style="position:fixed; inset:0; z-index:0; background:linear-gradient(180deg, rgba(31,34,46,0.74) 0%, rgba(31,34,46,0.84) 100%); pointer-events:none;"></div>
+  <div class="fl-grain" style="position:fixed; inset:0; z-index:1; pointer-events:none;"></div>
+
+  <div style="position:relative; z-index:2;">
+
+  <nav id="fl-nav" style="position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px clamp(20px,5vw,48px); transition:transform .35s var(--ease-flow);">
+    <a href="index.html" style="display:flex; align-items:center;"><img src="assets/logo-wordmark-cream-trim.png" alt="fluyir" style="height:34px; width:auto;"></a>
+    <div class="fl-nav-links" style="display:flex; align-items:center; gap:clamp(16px,3.2vw,30px);">
+      <a href="informes.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Numerología</a>
+      <a href="escritura.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Escritura</a>
+      <a href="lectura.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Lectura</a>
+      <a href="blog.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Blog</a>
+      <a href="sobre-mi.html" style="font-size:0.82rem; font-weight:500; color:var(--cream); text-decoration:none;">Sobre mí</a>
+    </div>
+    <button class="fl-nav-burger" type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" style="display:none; align-items:center; justify-content:center; min-width:44px; height:44px; padding:0 4px; background:none; border:none; font-family:var(--font-body); font-size:0.7rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream); cursor:pointer;">{{ menuLabel }}</button>
+  </nav>
+  <div class="fl-nav-panel" data-open="{{ menuOpen }}" style="position:fixed; inset:0; z-index:55; flex-direction:column; align-items:flex-start; justify-content:center; gap:clamp(18px,4vw,26px); padding:0 clamp(24px,7vw,48px); background:rgba(31,34,46,0.97); backdrop-filter:blur(6px);">
+      <a href="informes.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Numerología</a>
+      <a href="escritura.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Escritura</a>
+      <a href="lectura.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Lectura</a>
+      <a href="blog.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Blog</a>
+      <a href="sobre-mi.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Sobre mí</a>
+  </div>
+
+  <!-- HERO -->
+  <header id="top" class="fl-hero" style="position:relative; padding:clamp(150px,17vw,210px) clamp(20px,5vw,48px) 0;">
+    <div style="max-width:var(--container-wide); margin:0 auto;">
+      <div data-reveal style="max-width:var(--col); margin:0 auto;">
+        <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">sobre mí</p>
+        <h1 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.9rem,3.4vw,2.5rem); line-height:1.1; color:var(--cream); margin:14px 0 0;">Soy Paula.</h1>
+        <p class="fl-just" style="font-size:clamp(1rem,1.6vw,1.13rem); line-height:1.74; color:var(--cream-200); margin:26px 0 0; text-align:justify; hyphens:manual;">Hace tiempo que vengo mirando lo que incomoda. Desarmando lo que aprendí a mostrar, lo que guardé sin saber bien por qué, lo que repetía en automático sin preguntarme qué buscaba ahí. No es un proceso prolijo ni lineal: más bien una montaña rusa.</p>
+        <p class="fl-just" style="font-size:clamp(1rem,1.6vw,1.13rem); line-height:1.74; color:var(--cream-200); margin:18px 0 0; text-align:justify; hyphens:manual;">En el camino, encontré en qué apoyarme, lo que terminó convirtiéndose en la base de fluyir.</p>
+      </div>
+    </div>
+
+    <div data-reveal style="max-width:min(58rem,100%); margin:clamp(40px,5.5vw,76px) auto 0; position:relative; overflow:hidden; border-radius:3px;">
+      <div class="fl-banda" role="img" aria-label="Paula sentada en el medio de una ruta" style="width:100%; aspect-ratio:21/9; background-image:url('assets/ruta-sentada.jpeg'); background-size:cover; background-position:50% 62%; filter:saturate(0.82) contrast(1.05) brightness(0.62);"></div>
+      <div class="fl-banda-scrim" style="position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, rgba(31,34,46,0.55) 0%, rgba(31,34,46,0.08) 42%, rgba(31,34,46,0.72) 100%);"></div>
+      <div class="fl-banda-scrim" style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 130% at 50% 55%, rgba(31,34,46,0) 38%, rgba(31,34,46,0.85) 100%);"></div>
+    </div>
+  </header>
+
+  <!-- EL TEXTO -->
+  <section style="position:relative; padding:clamp(44px,6vw,80px) clamp(20px,5vw,48px) 0;">
+    <div style="max-width:var(--col); margin:0 auto;">
+      <div data-reveal>
+        <p class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Los libros están en mi vida desde que soy chica. Se convirtieron en mi mundo, un lugar al que recurría por puro placer y también como refugio cuando mi mundo real no estaba tan bueno. Con los años aparecieron otros que me sumergieron en la espiritualidad, fueron señalándome el camino, me hicieron cuestionarme y cuestionar lo que creía saber hasta el momento. Sigo leyendo por estas mismas razones.</p>
+      </div>
+      <div data-reveal style="margin-top:20px;">
+        <p class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">La escritura llegó hace unos años. Pensaba que lo hacían solo unos pocos afortunados que habían nacido con el don. Hasta que un libro (oh “casualidad”) me hizo pensar “¿y si sí?”. Así fue como me anoté al primer taller de muchos, sin haber escrito nada antes, al que quise dejar muchas veces pero no lo hice. Superé la incomodidad, y me expuse porque algo me decía que lo valía. Al tiempo empecé con mis cuadernos, la escritura catártica, mi gran cable a tierra.</p>
+      </div>
+      <div data-reveal style="margin-top:20px;">
+        <p class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Los números aparecieron a través de una formación donde no eran el tema principal, sino la base sobre la que se apoyaba todo lo demás. Comencé a crear mi propio material, recolectando toda la información dispersa que tenía de varios años, y complementé con otros cursos. Pero lo que realmente marcó la diferencia fue vivenciarlos: empecé a entender cosas mías que no sabía de dónde venían, les encontré sentido a otras tantas que me pasaban, dejé de autojuzgarme, y entendí por qué deseaba lo que deseaba, y me costaban las cosas que me costaban. Hoy son mi guía.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASE -->
+  <section style="position:relative; display:flex; align-items:center; justify-content:center; text-align:center; margin:clamp(40px,5.5vw,76px) 0; padding:clamp(44px,5.5vw,66px) clamp(20px,5vw,48px); overflow:hidden;">
+    <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(90% 130% at 50% 50%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 75%);"></div>
+    <div class="fl-frase-wrap" data-reveal style="position:relative; max-width:100%; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(16px,2.2vw,24px);">
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(203,161,90,0) 0%, rgba(230,196,154,1) 100%);"></span>
+      <p class="fl-frase-p" style="font-weight:400; font-size:clamp(1.5rem,3.2vw,2.25rem); line-height:1.32; color:var(--cream); margin:0; text-align:left;"><span style="display:block; font-family:var(--font-serif); font-weight:400; text-transform:lowercase; letter-spacing:0.01em;">no es prolijo ni lineal,</span><span class="fl-frase-tail" style="display:block; margin-top:0.1em; margin-left:clamp(18px,7vw,110px); font-family:var(--font-body); font-weight:500; font-size:0.775em; text-transform:uppercase; letter-spacing:0.14em;">más bien es una montaña rusa</span></p>
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(230,196,154,1) 0%, rgba(203,161,90,0) 100%);"></span>
+    </div>
+  </section>
+
+  <!-- CIERRE DEL TEXTO -->
+  <section style="position:relative; padding:0 clamp(20px,5vw,48px);">
+    <div data-reveal style="max-width:var(--col); margin:0 auto;">
+      <p class="fl-just" style="font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.8; color:var(--cream-200); margin:0; text-align:justify; hyphens:manual;">Los tres, libros, escritura y números, se volvieron mis pilares, que me acompañan a seguir desarmando lo que incomoda, lo que cuesta mirar, para re-conocerme en mi totalidad. Por eso, cuando te hablo de mirar lo que potencia y lo que incomoda por igual, no hablo desde afuera. Lo transito yo también, todos los días.</p>
+    </div>
+  </section>
+
+  <!-- CIERRE: PROPUESTA + CONTACTO + FOOTER -->
+  <div style="position:relative; margin:clamp(40px,5.5vw,76px) 0 0; overflow:hidden;">
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(95% 120% at 50% 46%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 82%);"></div>
+  <section style="position:relative; padding:clamp(52px,6.5vw,86px) clamp(20px,5vw,48px) clamp(40px,5vw,66px);">
+    <div style="position:relative; max-width:var(--col); margin:0 auto;">
+      <div data-reveal style="text-align:center;">
+        <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">propuesta</p>
+        <p style="font-size:clamp(0.92rem,1.3vw,0.98rem); line-height:1.8; color:var(--cream-200); margin:16px 0 0;">Explorá como lo sientas, todos se complementan.</p>
+      </div>
+
+      <div data-reveal style="position:relative; max-width:min(34rem,100%); margin:clamp(30px,3.8vw,44px) auto 0;">
+        <span style="position:absolute; left:16%; right:16%; top:25px; height:2px; background:linear-gradient(90deg, rgba(203,161,90,0.2) 0%, #CBA15A 22%, #E6C49A 50%, #CBA15A 78%, rgba(203,161,90,0.2) 100%); box-shadow:0 0 10px rgba(203,161,90,0.45);"></span>
+        <div style="position:relative; display:grid; grid-template-columns:repeat(3,1fr); align-items:start; justify-items:center;">
+        <a href="informes.html" style="display:flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none;">
+          <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid var(--cream-a20); color:var(--cream-a64);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5a10.5 10.5 0 1 1-7.4 3.1"></path><path d="M14 8.5a5.5 5.5 0 1 0 3.9 9.4" stroke-opacity="0.55"></path><circle cx="14" cy="14" r="1.4" fill="currentColor" stroke="none"></circle><circle cx="6.6" cy="6.6" r="1.6" fill="currentColor" stroke="none"></circle></svg></span>
+          <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a;">Numerología</span>
+        </a>
+        <a href="escritura.html" style="display:flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none;">
+          <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid var(--cream-a20); color:var(--cream-a64);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 21c3.6 0 4.2-4.6 6.3-10.6C11.2 6.2 12.6 4 14.4 4c1.5 0 2.3 1.3 2.3 2.7 0 3.1-3 5.5-6.1 6.7-2.2.9-3.6 2-3.6 3.4 0 1.1.9 1.8 2 1.8 2.6 0 4.4-3 6.6-3 1.1 0 1.7.7 1.7 1.5 0 .9-.7 1.5-.7 2.3 0 .6.5 1 1.2 1 1.6 0 3.1-1.6 5.7-1.6"></path></svg></span>
+          <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a;">Escritura</span>
+        </a>
+        <a href="lectura.html" style="display:flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none;">
+          <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid var(--cream-a20); color:var(--cream-a64);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7.5v16"></path><path d="M14 7.5C11.2 5 7.8 4 3.5 4v13c4.3 0 7.7 1.2 10.5 3.6"></path><path d="M14 7.5C16.8 5 20.2 4 24.5 4v13c-4.3 0-7.7 1.2-10.5 3.6" stroke-opacity="0.5"></path></svg></span>
+          <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a;">Lectura</span>
+        </a>
+        </div>
+      </div>
+
+      <div data-reveal style="margin:clamp(40px,5vw,64px) auto 0; text-align:center;">
+        <p style="font-size:clamp(0.92rem,1.3vw,0.98rem); line-height:1.76; color:var(--cream-200); margin:0;">Podés escribirme por acá.</p>
+        <a href="https://instagram.com/fluyir22" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; margin-top:18px; font-size:0.86rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a; text-decoration:none; border-bottom:1px solid var(--cream-a40); padding-bottom:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="3.8"></circle><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle></svg>
+          @fluyir22
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="position:relative; margin-top:-1px; padding:clamp(40px,5vw,66px) clamp(20px,5vw,48px) clamp(28px,3.4vw,44px);">
+    <div style="max-width:var(--container-wide); margin:0 auto; padding-top:clamp(24px,3.2vw,34px); border-top:1px solid var(--cream-a08);">
+      <div class="fl-foot-lock" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:clamp(16px,2.6vw,28px);">
+        <img src="assets/logo-wordmark-cream-trim.png" alt="fluyir" style="display:block; height:34px; width:auto;">
+        <span class="fl-foot-bar" style="flex:none; width:1px; height:30px; background:var(--cream-a20);"></span>
+        <p style="font-size:clamp(0.9rem,1.35vw,1rem); font-weight:500; color:var(--cream-200); margin:0;">Espiritualidad sin glitter.</p>
+      </div>
+      <p style="text-align:center; font-size:0.72rem; color:var(--cream-a64); margin:clamp(22px,3vw,30px) 0 0;">© {{ year }} fluyir. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860},&quot;revealAnimations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  componentDidMount() { this._reveal(); this._nav(); this._draw(); this._thread(); }
+  _thread() {
+    const list = document.getElementById('fl-list');
+    const fill = document.getElementById('fl-fill');
+    if (!list || !fill) return;
+    let tick = false;
+    const apply = () => {
+      const r = list.getBoundingClientRect();
+      const mark = window.innerHeight * 0.62;
+      let p = (mark - r.top) / r.height;
+      p = Math.max(0, Math.min(1, p));
+      fill.style.height = (p * r.height) + 'px';
+      tick = false;
+    };
+    apply();
+    window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(apply); } }, { passive: true });
+    window.addEventListener('resize', apply);
+  }
+  _draw() {
+    const on = this.props.revealAnimations ?? true;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const svgs = Array.from(document.querySelectorAll('[data-draw] svg'));
+    if (!svgs.length || !on || reduce || !('IntersectionObserver' in window)) return;
+    svgs.forEach(svg => {
+      Array.from(svg.querySelectorAll('path, line, polyline')).forEach((p, i) => {
+        let L = 0; try { L = p.getTotalLength(); } catch (e) { L = 0; }
+        if (!L) return;
+        p.style.strokeDasharray = L;
+        p.style.strokeDashoffset = L;
+        p.style.transition = 'stroke-dashoffset 1500ms cubic-bezier(0.22,0.61,0.36,1) ' + (i * 320) + 'ms';
+      });
+      Array.from(svg.querySelectorAll('circle')).forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transition = 'opacity 800ms cubic-bezier(0.22,0.61,0.36,1) ' + (900 + i * 240) + 'ms';
+      });
+    });
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const svg = e.target;
+      svg.querySelectorAll('path, line, polyline').forEach(p => { p.style.strokeDashoffset = '0'; });
+      svg.querySelectorAll('circle').forEach(c => { c.style.opacity = '1'; });
+      io.unobserve(svg);
+    }), { threshold: 0.3, rootMargin: '0px 0px -10% 0px' });
+    svgs.forEach(s => io.observe(s));
+  }
+  _nav() {
+    const nav = document.getElementById('fl-nav');
+    if (!nav) return;
+    let last = window.scrollY || 0, tick = false;
+    const apply = () => {
+      const y = window.scrollY || 0;
+      if (y > last + 4 && y > 90) nav.style.transform = 'translateY(-110%)';
+      else if (y < last - 4 || y <= 24) nav.style.transform = 'translateY(0)';
+      last = y; tick = false;
+    };
+    window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(apply); } }, { passive: true });
+  }
+  _reveal() {
+    const on = this.props.revealAnimations ?? true;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!on || reduce || !('IntersectionObserver' in window)) return;
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity 760ms cubic-bezier(0.22,0.61,0.36,1), transform 760ms cubic-bezier(0.22,0.61,0.36,1)';
+    });
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+    }), { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+  _toggle = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  _close = () => this.setState({ menuOpen: false });
+  renderVals() {
+    return {
+      menuOpen: String(!!this.state.menuOpen),
+      menuLabel: this.state.menuOpen ? 'cerrar' : 'menú',
+      toggleMenu: this._toggle,
+      closeMenu: this._close,
+      year: new Date().getFullYear()
+    };
+  }
+}
+</script>
+</body>
+</html>

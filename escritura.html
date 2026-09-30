@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/tokens/base.css">
+  <link rel="stylesheet" href="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/styles.css">
+  <script src="_ds/fluyir-design-system-b40d3434-4b3b-41a9-a6b1-4f23c2229881/_ds_bundle.js"></script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { background: var(--night); margin: 0; }
+    a { color: var(--cream); }
+    a:hover { color: var(--turquoise-soft); }
+    .fl-nav-panel { display: none; }
+    .fl-nav-panel[data-open="true"] { display: flex; }
+    @media (max-width: 760px) {
+      .fl-nav-links { display: none !important; }
+      .fl-nav-burger { display: inline-flex !important; }
+    }
+    @media (max-width: 900px) {
+      .fl-quees { align-items: center !important; }
+      .fl-quees-img { flex: 1 1 100% !important; max-width: 360px !important; margin: 0 auto !important; }
+      .fl-hero { padding-top: 116px !important; }
+      .fl-banda { aspect-ratio: 4/3 !important; filter: saturate(0.88) contrast(1.02) brightness(0.86) !important; }
+      .fl-banda-scrim { opacity: 0.45 !important; }
+      .fl-frase-tail { text-align: right !important; margin-left: 0 !important; }
+      .fl-frase-p > span { margin-left: 0 !important; }
+      .fl-frase-thread { margin-left: 0 !important; align-self: center !important; }
+      .fl-frase-p { font-size: clamp(1.35rem,6.4vw,1.7rem) !important; width: 100% !important; }
+      .fl-frase-wrap { width: 100% !important; align-items: stretch !important; }
+      .fl-just { text-align: justify !important; hyphens: manual !important; }
+      .fl-foot-bar { display: none !important; }
+      .fl-foot-lock { gap: 14px !important; }
+    }
+  </style>
+</helmet>
+
+<div lang="es" style="--col:min(52rem,100%); position:relative; width:100%; overflow-x:hidden; color:var(--cream); font-family:var(--font-body);">
+
+  <div style="position:fixed; inset:0; z-index:0; background-image:url('assets/fondo-historias-1.jpg'); background-size:cover; background-position:center; pointer-events:none;"></div>
+  <div style="position:fixed; inset:0; z-index:0; background:linear-gradient(180deg, rgba(31,34,46,0.74) 0%, rgba(31,34,46,0.84) 100%); pointer-events:none;"></div>
+  <div class="fl-grain" style="position:fixed; inset:0; z-index:1; pointer-events:none;"></div>
+
+  <div style="position:relative; z-index:2;">
+
+  <nav id="fl-nav" style="position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px clamp(20px,5vw,48px); transition:transform .35s var(--ease-flow);">
+    <a href="index.html" style="display:flex; align-items:center;"><img src="assets/logo-wordmark-cream-trim.png" alt="fluyir" style="height:34px; width:auto;"></a>
+    <div class="fl-nav-links" style="display:flex; align-items:center; gap:clamp(16px,3.2vw,30px);">
+      <a href="informes.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Numerología</a>
+      <a href="escritura.html" style="font-size:0.82rem; font-weight:500; color:var(--cream); text-decoration:none;">Escritura</a>
+      <a href="lectura.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Lectura</a>
+      <a href="blog.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Blog</a>
+      <a href="sobre-mi.html" style="font-size:0.82rem; font-weight:500; color:var(--cream-200); text-decoration:none;">Sobre mí</a>
+    </div>
+    <button class="fl-nav-burger" type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" style="display:none; align-items:center; justify-content:center; min-width:44px; height:44px; padding:0 4px; background:none; border:none; font-family:var(--font-body); font-size:0.7rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream); cursor:pointer;">{{ menuLabel }}</button>
+  </nav>
+  <div class="fl-nav-panel" data-open="{{ menuOpen }}" style="position:fixed; inset:0; z-index:55; flex-direction:column; align-items:flex-start; justify-content:center; gap:clamp(18px,4vw,26px); padding:0 clamp(24px,7vw,48px); background:rgba(31,34,46,0.97); backdrop-filter:blur(6px);">
+      <a href="informes.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Numerología</a>
+      <a href="escritura.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Escritura</a>
+      <a href="lectura.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Lectura</a>
+      <a href="blog.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Blog</a>
+      <a href="sobre-mi.html" onClick="{{ closeMenu }}" style="font-size:1.32rem; font-weight:500; color:var(--cream); text-decoration:none;">Sobre mí</a>
+  </div>
+
+  <!-- HERO -->
+  <header id="top" class="fl-hero" style="position:relative; padding:clamp(150px,17vw,210px) clamp(20px,5vw,48px) 0;">
+    <div style="max-width:var(--container-wide); margin:0 auto;">
+      <div data-reveal style="max-width:var(--container-wide); margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(36px,6vw,72px); align-items:center;" class="fl-quees">
+      <div style="flex:1 1 440px; min-width:0;">
+        <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">escritura</p>
+        <h1 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.9rem,3.4vw,2.5rem); line-height:1.14; color:var(--cream); margin:14px 0 0;">Escribo para respirar</h1>
+        <p style="font-family:var(--font-serif); font-style:italic; font-size:clamp(1.1rem,1.75vw,1.3rem); line-height:1.5; color:var(--cream); max-width:30.5em; margin:22px 0 0; text-align:justify; hyphens:manual;">La escritura catártica es mi forma de descargar. Lo que queda en el papel sale crudo, desordenado, tal cual lo siento.</p>
+        <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); max-width:60ch; margin:18px 0 0; text-align:justify; hyphens:manual;">No busco textos de escritura prolija. Busco la expresión sin censura, esa censura que sí vivencia mi voz.</p>
+      </div>
+      <div class="fl-quees-img" style="flex:0 1 300px; max-width:320px; width:100%;">
+        <img src="assets/escritorio-cuaderno.jpg" alt="Cuaderno escrito a mano, abierto sobre el escritorio junto al mate" style="display:block; width:100%; aspect-ratio:3/4; object-fit:cover; object-position:50% 70%; filter:saturate(0.9) brightness(0.9) contrast(1.04); border:1px solid var(--cream-a12); border-radius:3px; box-shadow:var(--shadow-lg);">
+      </div>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- FRASE -->
+  <section style="position:relative; display:flex; align-items:center; justify-content:center; text-align:center; margin:clamp(48px,6vw,84px) 0 0; padding:clamp(44px,5.5vw,66px) clamp(20px,5vw,48px); overflow:hidden;">
+    <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(90% 130% at 50% 50%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 75%);"></div>
+    <div class="fl-frase-wrap" data-reveal style="position:relative; max-width:100%; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(16px,2.2vw,24px);">
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(203,161,90,0) 0%, rgba(230,196,154,1) 100%);"></span>
+      <p class="fl-frase-p" style="font-weight:400; font-size:clamp(1.5rem,3.2vw,2.25rem); line-height:1.32; color:var(--cream); margin:0; text-align:left;"><span style="display:block; font-family:var(--font-serif); font-weight:400; text-transform:lowercase; letter-spacing:0.01em;">la escritura me salvó de la asfixia</span><span class="fl-frase-tail" style="display:block; margin-top:0.1em; margin-left:clamp(18px,7vw,110px); font-family:var(--font-body); font-weight:500; font-size:0.775em; text-transform:uppercase; letter-spacing:0.14em;">de lo no dicho, que es mucho</span></p>
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(230,196,154,1) 0%, rgba(203,161,90,0) 100%);"></span>
+    </div>
+  </section>
+
+  <!-- PARA MÍ -->
+  <section style="position:relative; padding:clamp(48px,6.5vw,88px) clamp(20px,5vw,48px) 0;">
+    <div data-reveal style="max-width:var(--col); margin:0 auto;">
+      <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">para mí</p>
+      <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.45rem,2.4vw,1.8rem); line-height:1.16; color:var(--cream); margin:14px 0 0;">Depende del día</h2>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:22px 0 0; text-align:justify; hyphens:manual;">Es bajar el pensamiento compulsivo. Sacar de adentro lo que no para de dar vueltas, hasta que la mente se tranquiliza.</p>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:18px 0 0; text-align:justify; hyphens:manual;">Es poner en el papel lo que no me animo a admitir en voz alta. No solo lo que me cuesta decirle a un otro: también lo que pienso o siento y prefiero no mostrar, porque me siento expuesta.</p>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:18px 0 0; text-align:justify; hyphens:manual;">Es la libertad de ser todo lo negativa que quiero. O de desear en grande, aunque parezca falopa.</p>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:18px 0 0; text-align:justify; hyphens:manual;">Es ordenarme por dentro. Al buscar las palabras, algo se acomoda. A veces, escribiendo, conecto cosas que pensando no me salían.</p>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:18px 0 0; text-align:justify; hyphens:manual;">Es un lugar donde estar cuando ni yo me entiendo.</p>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:18px 0 0; text-align:justify; hyphens:manual;">Y es un rato para mí. Conectar conmigo. A veces, es como meditar.</p>
+    </div>
+  </section>
+
+  <!-- PARA VOS -->
+  <section style="position:relative; padding:clamp(48px,6.5vw,88px) clamp(20px,5vw,48px) 0;">
+    <div data-reveal style="max-width:var(--col); margin:0 auto;">
+      <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">para vos</p>
+      <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.45rem,2.4vw,1.8rem); line-height:1.16; color:var(--cream); margin:14px 0 0;">Está a mano</h2>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:22px 0 0; text-align:justify; hyphens:manual;">Te cuento todo esto porque la escritura está disponible para cualquiera, y la usamos poco. Diez minutos, en cualquier momento, en papel o en el celular. Es gratis y se puede hacer donde sea. Funciona como una respiración profunda: te devuelve a vos.</p>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:18px 0 0; text-align:justify; hyphens:manual;">Y no es solo cosa mía: hace rato que se estudia, y los resultados dicen lo mismo.</p>
+    </div>
+  </section>
+
+  <!-- FRASE 2 -->
+  <section style="position:relative; display:flex; align-items:center; justify-content:center; text-align:center; margin:clamp(48px,6vw,84px) 0 0; padding:clamp(44px,5.5vw,66px) clamp(20px,5vw,48px); overflow:hidden;">
+    <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(90% 130% at 50% 50%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 75%);"></div>
+    <div class="fl-frase-wrap" data-reveal style="position:relative; max-width:100%; display:flex; flex-direction:column; align-items:flex-start; gap:clamp(16px,2.2vw,24px);">
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(203,161,90,0) 0%, rgba(230,196,154,1) 100%);"></span>
+      <p class="fl-frase-p" style="font-weight:400; font-size:clamp(1.5rem,3.2vw,2.25rem); line-height:1.32; color:var(--cream); margin:0; text-align:left;"><span style="display:block; font-family:var(--font-body); font-weight:500; font-size:0.775em; text-transform:uppercase; letter-spacing:0.14em;">no hace falta saber escribir,</span><span class="fl-frase-tail" style="display:block; margin-top:0.1em; margin-left:clamp(18px,7vw,110px); font-family:var(--font-serif); font-weight:400; text-transform:lowercase; letter-spacing:0.01em;">alcanza con querer sacarlo</span></p>
+      <span class="fl-frase-thread" style="flex:none; margin-left:clamp(18px,7vw,110px); width:2px; height:clamp(32px,4vw,48px); box-shadow:0 0 10px rgba(203,161,90,0.55); background:linear-gradient(180deg, rgba(230,196,154,1) 0%, rgba(203,161,90,0) 100%);"></span>
+    </div>
+  </section>
+
+  <!-- PRÁCTICAS -->
+  <section style="position:relative; padding:clamp(48px,6.5vw,88px) clamp(20px,5vw,48px) 0;">
+    <div data-reveal style="max-width:var(--col); margin:0 auto;">
+      <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">prácticas posibles</p>
+      <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(1.45rem,2.4vw,1.8rem); line-height:1.16; color:var(--cream); margin:14px 0 0;">Maneras de escribir, sin filtro</h2>
+      <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:20px 0 0; text-align:justify; hyphens:manual;">Estas son las que a mí me funcionan. Tomá las que te sirvan, dejá el resto.</p>
+    </div>
+
+    <div style="max-width:var(--col); margin:clamp(28px,3.6vw,44px) auto 0; display:flex; flex-direction:column;">
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:clamp(26px,3vw,38px);">
+        <span style="position:absolute; left:23px; top:48px; bottom:0; width:2px; background:linear-gradient(var(--cream-a20), var(--cream-a08)); transform:translateX(-50%);"></span>
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15.8 4.6l3.6 3.6L8.6 19 4.4 19.6 5 15.4 15.8 4.6Z"></path><path d="M14 6.4l3.6 3.6"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Dejar los errores donde están</h3>
+          <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">La palabra que no era, el paréntesis abierto, la letra cambiada. Si frenás a corregir, la cabeza toma el control y lo que venía saliendo se corta.</p>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:clamp(26px,3vw,38px);">
+        <span style="position:absolute; left:23px; top:48px; bottom:0; width:2px; background:linear-gradient(var(--cream-a20), var(--cream-a08)); transform:translateX(-50%);"></span>
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12s3.4-5.8 9-5.8c1.3 0 2.5.3 3.5.8"></path><path d="M19 8.6c1.3 1.5 2 3.4 2 3.4s-3.4 5.8-9 5.8c-1.7 0-3.2-.5-4.4-1.2"></path><path d="M4.6 19.4 19.4 4.6"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Cerrar sin releer</h3>
+          <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">Cuando terminás, cerrás el cuaderno. Releer en caliente te devuelve a lo que acabás de sacar. Y si no lo volvés a leer nunca, ya cumplió su función.</p>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:clamp(26px,3vw,38px);">
+        <span style="position:absolute; left:23px; top:48px; bottom:0; width:2px; background:linear-gradient(var(--cream-a20), var(--cream-a08)); transform:translateX(-50%);"></span>
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 6.6h17.2v10.8H3.4z"></path><path d="M3.8 7.2 12 13l8.2-5.8"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Escribir solo para vos</h3>
+          <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">Si mientras escribís pensás en cómo suena, ya hay alguien más en la hoja. Cuando es solo para vos, aparece lo que te guardás, que suele ser justo lo que necesitaba salir.</p>
+        </div>
+      </div>
+
+      <div data-reveal style="position:relative; display:flex; align-items:flex-start; gap:20px; padding-bottom:0;">
+        <span style="position:relative; z-index:1; flex:none; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--cream-a08); border:1px solid var(--border); color:var(--cream-a64);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.6h9.6v16.8H6z"></path><path d="M15.6 12H21"></path><path d="M18.4 9.4 21 12l-2.6 2.6"></path></svg></span>
+        <div style="flex:1; min-width:0;">
+          <h3 style="font-family:var(--font-body); font-weight:600; font-size:1.08rem; color:var(--cream); margin:0;">Empezar por donde sea</h3>
+          <p class="fl-just" style="font-size:clamp(0.98rem,1.5vw,1.06rem); line-height:1.74; color:var(--cream-200); margin:8px 0 0; text-align:justify; hyphens:manual;">Cualquier cosa sirve para arrancar. Y si no tenés de dónde agarrarte, escribí justamente eso: que no sabés qué escribir. A veces, a partir de ahí, el resto sale solo, hacia un lugar que no esperabas. Otras tantas no sale absolutamente nada interesante, y también está bien.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CIERRE: PROPUESTA + CONTACTO + FOOTER -->
+  <div style="position:relative; margin:clamp(40px,5.5vw,76px) 0 0; overflow:hidden;">
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(95% 120% at 50% 46%, rgba(18,20,28,0.8) 0%, rgba(18,20,28,0) 82%);"></div>
+  <section style="position:relative; padding:clamp(52px,6.5vw,86px) clamp(20px,5vw,48px) clamp(40px,5vw,66px);">
+    <div style="position:relative; max-width:var(--col); margin:0 auto;">
+      <div data-reveal style="text-align:center;">
+        <p style="font-size:0.68rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--cream-a64); margin:0;">propuesta</p>
+        <p style="font-size:clamp(0.92rem,1.3vw,0.98rem); line-height:1.8; color:var(--cream-200); margin:16px 0 0;">Explorá como lo sientas, todos se complementan.</p>
+      </div>
+
+      <div data-reveal style="position:relative; max-width:min(34rem,100%); margin:clamp(30px,3.8vw,44px) auto 0;">
+        <span style="position:absolute; left:16%; right:16%; top:25px; height:2px; background:linear-gradient(90deg, rgba(203,161,90,0.2) 0%, #CBA15A 22%, #E6C49A 50%, #CBA15A 78%, rgba(203,161,90,0.2) 100%); box-shadow:0 0 10px rgba(203,161,90,0.45);"></span>
+        <div style="position:relative; display:grid; grid-template-columns:repeat(3,1fr); align-items:start; justify-items:center;">
+        <a href="informes.html" style="display:flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none;">
+          <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid var(--cream-a20); color:var(--cream-a64);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5a10.5 10.5 0 1 1-7.4 3.1"></path><path d="M14 8.5a5.5 5.5 0 1 0 3.9 9.4" stroke-opacity="0.55"></path><circle cx="14" cy="14" r="1.4" fill="currentColor" stroke="none"></circle><circle cx="6.6" cy="6.6" r="1.6" fill="currentColor" stroke="none"></circle></svg></span>
+          <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a;">Numerología</span>
+        </a>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+          <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid #CBA15A; color:#E6C49A; box-shadow:0 0 14px rgba(203,161,90,0.35);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 21c3.6 0 4.2-4.6 6.3-10.6C11.2 6.2 12.6 4 14.4 4c1.5 0 2.3 1.3 2.3 2.7 0 3.1-3 5.5-6.1 6.7-2.2.9-3.6 2-3.6 3.4 0 1.1.9 1.8 2 1.8 2.6 0 4.4-3 6.6-3 1.1 0 1.7.7 1.7 1.5 0 .9-.7 1.5-.7 2.3 0 .6.5 1 1.2 1 1.6 0 3.1-1.6 5.7-1.6"></path></svg></span>
+          <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream);">Escritura</span>
+        </div>
+        <a href="lectura.html" style="display:flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none;">
+          <span style="width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(28,31,42,0.98); border:1px solid var(--cream-a20); color:var(--cream-a64);"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7.5v16"></path><path d="M14 7.5C11.2 5 7.8 4 3.5 4v13c4.3 0 7.7 1.2 10.5 3.6"></path><path d="M14 7.5C16.8 5 20.2 4 24.5 4v13c-4.3 0-7.7 1.2-10.5 3.6" stroke-opacity="0.5"></path></svg></span>
+          <span style="font-size:0.74rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a;">Lectura</span>
+        </a>
+        </div>
+      </div>
+
+      <div data-reveal style="margin:clamp(40px,5vw,64px) auto 0; text-align:center;">
+        <p style="font-size:clamp(0.92rem,1.3vw,0.98rem); line-height:1.76; color:var(--cream-200); margin:0;">Podés escribirme por acá.</p>
+        <a href="https://instagram.com/fluyir22" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; margin-top:18px; font-size:0.86rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#cba15a; text-decoration:none; border-bottom:1px solid var(--cream-a40); padding-bottom:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="3.8"></circle><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle></svg>
+          @fluyir22
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="position:relative; margin-top:-1px; padding:clamp(40px,5vw,66px) clamp(20px,5vw,48px) clamp(28px,3.4vw,44px);">
+    <div style="max-width:var(--container-wide); margin:0 auto; padding-top:clamp(24px,3.2vw,34px); border-top:1px solid var(--cream-a08);">
+      <div class="fl-foot-lock" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:clamp(16px,2.6vw,28px);">
+        <img src="assets/logo-wordmark-cream-trim.png" alt="fluyir" style="display:block; height:34px; width:auto;">
+        <span class="fl-foot-bar" style="flex:none; width:1px; height:30px; background:var(--cream-a20);"></span>
+        <p style="font-size:clamp(0.9rem,1.35vw,1rem); font-weight:500; color:var(--cream-200); margin:0;">Espiritualidad sin glitter.</p>
+      </div>
+      <p style="text-align:center; font-size:0.72rem; color:var(--cream-a64); margin:clamp(22px,3vw,30px) 0 0;">© {{ year }} fluyir. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860},&quot;revealAnimations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  componentDidMount() { this._reveal(); this._nav(); this._draw(); this._thread(); }
+  _thread() {
+    const list = document.getElementById('fl-list');
+    const fill = document.getElementById('fl-fill');
+    if (!list || !fill) return;
+    let tick = false;
+    const apply = () => {
+      const r = list.getBoundingClientRect();
+      const mark = window.innerHeight * 0.62;
+      let p = (mark - r.top) / r.height;
+      p = Math.max(0, Math.min(1, p));
+      fill.style.height = (p * r.height) + 'px';
+      tick = false;
+    };
+    apply();
+    window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(apply); } }, { passive: true });
+    window.addEventListener('resize', apply);
+  }
+  _draw() {
+    const on = this.props.revealAnimations ?? true;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const svgs = Array.from(document.querySelectorAll('[data-draw] svg'));
+    if (!svgs.length || !on || reduce || !('IntersectionObserver' in window)) return;
+    svgs.forEach(svg => {
+      Array.from(svg.querySelectorAll('path, line, polyline')).forEach((p, i) => {
+        let L = 0; try { L = p.getTotalLength(); } catch (e) { L = 0; }
+        if (!L) return;
+        p.style.strokeDasharray = L;
+        p.style.strokeDashoffset = L;
+        p.style.transition = 'stroke-dashoffset 1500ms cubic-bezier(0.22,0.61,0.36,1) ' + (i * 320) + 'ms';
+      });
+      Array.from(svg.querySelectorAll('circle')).forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transition = 'opacity 800ms cubic-bezier(0.22,0.61,0.36,1) ' + (900 + i * 240) + 'ms';
+      });
+    });
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const svg = e.target;
+      svg.querySelectorAll('path, line, polyline').forEach(p => { p.style.strokeDashoffset = '0'; });
+      svg.querySelectorAll('circle').forEach(c => { c.style.opacity = '1'; });
+      io.unobserve(svg);
+    }), { threshold: 0.3, rootMargin: '0px 0px -10% 0px' });
+    svgs.forEach(s => io.observe(s));
+  }
+  _nav() {
+    const nav = document.getElementById('fl-nav');
+    if (!nav) return;
+    let last = window.scrollY || 0, tick = false;
+    const apply = () => {
+      const y = window.scrollY || 0;
+      if (y > last + 4 && y > 90) nav.style.transform = 'translateY(-110%)';
+      else if (y < last - 4 || y <= 24) nav.style.transform = 'translateY(0)';
+      last = y; tick = false;
+    };
+    window.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(apply); } }, { passive: true });
+  }
+  _reveal() {
+    const on = this.props.revealAnimations ?? true;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!on || reduce || !('IntersectionObserver' in window)) return;
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity 760ms cubic-bezier(0.22,0.61,0.36,1), transform 760ms cubic-bezier(0.22,0.61,0.36,1)';
+    });
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+    }), { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+  _toggle = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  _close = () => this.setState({ menuOpen: false });
+  renderVals() {
+    return {
+      menuOpen: String(!!this.state.menuOpen),
+      menuLabel: this.state.menuOpen ? 'cerrar' : 'menú',
+      toggleMenu: this._toggle,
+      closeMenu: this._close,
+      year: new Date().getFullYear()
+    };
+  }
+}
+</script>
+</body>
+</html>
